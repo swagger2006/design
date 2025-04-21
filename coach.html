@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Find Your Perfect Coach</title>
+    <link rel="stylesheet" href="coach.css"
+</head>
+<body>
+    <header class="header">
+        <h1>Find Your Perfect Coach</h1>
+        <p>Expert guidance to help you achieve your goals</p>
+    </header>
+
+    <section class="search-section">
+        <div class="search-bar">
+            <input type="text" placeholder="Search coaches..." id="searchInput">
+            <select id="specialtyFilter">
+                <option value="all">All Specialties</option>
+                <option value="fitness">Cricket</option>
+                <option value="business">Chess</option>
+                <option value="life">Football</option>
+                <option value="career">Arm wrestling</option>
+            </select>
+        </div>
+        <div class="filters">
+            <button class="filter-button active" data-filter="all">All</button>
+            <button class="filter-button" data-filter="fitness">Cricket</button>
+            <button class="filter-button" data-filter="business">Chess</button>
+            <button class="filter-button" data-filter="life">Football</button>
+            <button class="filter-button" data-filter="career">Arm wrestling</button>
+        </div>
+    </section>
+
+    <div class="coaches-grid" id="coachesGrid">
+        <!-- Coaches will be dynamically added here -->
+    </div>
+
+    <div id="booking-modal">
+        <div class="modal-content">
+            <span class="close-modal">&times;</span>
+            <h2>Book a Session</h2>
+            <form id="bookingForm">
+                <input type="text" placeholder="Your Name" required>
+                <input type="email" placeholder="Your Email" required>
+                <input type="date" required>
+                <button type="submit" class="book-button">Confirm Booking</button>
+            </form>
+        </div>
+    </div>
+
+    <script src="coach.js"></script>
+</body>
+</html>

@@ -1,0 +1,389 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sports Events Dashboard</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Arial', sans-serif;
+        }
+
+        body {
+            background-color: #f0f2f5;
+            color: #333;
+        }
+
+        .header {
+            background: linear-gradient(to right, #1a237e, #0d47a1);
+            color: white;
+            padding: 1rem;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .header-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .sport-tabs {
+            display: flex;
+            gap: 1rem;
+            padding: 1rem;
+            background-color: white;
+            border-bottom: 1px solid #ddd;
+        }
+
+        .sport-tab {
+            padding: 0.5rem 1rem;
+            border: none;
+            background: none;
+            cursor: pointer;
+            font-weight: bold;
+            color: #666;
+            border-bottom: 3px solid transparent;
+        }
+
+        .sport-tab.active {
+            color: #0d47a1;
+            border-bottom-color: #0d47a1;
+        }
+
+        .main-content {
+            max-width: 1200px;
+            margin: 2rem auto;
+            padding: 0 1rem;
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            gap: 2rem;
+        }
+
+        .live-matches {
+            background: white;
+            border-radius: 10px;
+            padding: 1.5rem;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+
+        .match-card {
+            border: 1px solid #eee;
+            border-radius: 8px;
+            padding: 1rem;
+            margin-bottom: 1rem;
+            transition: transform 0.2s;
+        }
+
+        .match-card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+
+        .match-header {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 0.5rem;
+        }
+
+        .match-status {
+            background-color: #e53935;
+            color: white;
+            padding: 0.25rem 0.5rem;
+            border-radius: 4px;
+            font-size: 0.8rem;
+        }
+
+        .match-teams {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin: 1rem 0;
+        }
+
+        .team {
+            text-align: center;
+            flex: 1;
+        }
+
+        .team-name {
+            font-weight: bold;
+            margin-top: 0.5rem;
+        }
+
+        .score {
+            font-size: 1.5rem;
+            font-weight: bold;
+            padding: 0 1rem;
+        }
+
+        .match-info {
+            color: #666;
+            font-size: 0.9rem;
+            text-align: center;
+        }
+
+        .upcoming-events {
+            background: white;
+            border-radius: 10px;
+            padding: 1.5rem;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+
+        .event-item {
+            padding: 1rem;
+            border-bottom: 1px solid #eee;
+        }
+
+        .event-item:last-child {
+            border-bottom: none;
+        }
+
+        .event-date {
+            color: #666;
+            font-size: 0.9rem;
+        }
+
+        .event-title {
+            font-weight: bold;
+            margin: 0.5rem 0;
+        }
+
+        .event-venue {
+            color: #666;
+            font-size: 0.9rem;
+        }
+
+        .live-indicator {
+            display: inline-block;
+            width: 8px;
+            height: 8px;
+            background-color: #e53935;
+            border-radius: 50%;
+            margin-right: 0.5rem;
+            animation: blink 1s infinite;
+        }
+
+        @keyframes blink {
+            50% { opacity: 0.5; }
+        }
+
+        .section-title {
+            margin-bottom: 1rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 2px solid #eee;
+        }
+
+        .notification {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background: #323232;
+            color: white;
+            padding: 1rem;
+            border-radius: 4px;
+            display: none;
+            animation: slideIn 0.3s ease-out;
+        }
+
+        @keyframes slideIn {
+            from { transform: translateX(100%); }
+            to { transform: translateX(0); }
+        }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <div class="header-content">
+            <h1>Event Updates</h1>
+            <div id="clock"></div>
+        </div>
+    </header>
+
+    <div class="sport-tabs">
+        <button class="sport-tab active" data-sport="all">All Sports</button>
+        <button class="sport-tab" data-sport="football">Football</button>
+        <button class="sport-tab" data-sport="basketball">Basketball</button>
+        <button class="sport-tab" data-sport="tennis">Tennis</button>
+        <button class="sport-tab" data-sport="cricket">Cricket</button>
+    </div>
+
+    <main class="main-content">
+        <section class="live-matches">
+            <h2 class="section-title">Live Matches</h2>
+            <div id="liveMatchesContainer"></div>
+        </section>
+
+        <section class="upcoming-events">
+            <h2 class="section-title">Upcoming Events</h2>
+            <div id="upcomingEventsContainer"></div>
+        </section>
+    </main>
+
+    <div class="notification" id="notification"></div>
+
+    <script>
+        // Sample data for live matches
+        const liveMatches = [
+            {
+                id: 1,
+                sport: 'football',
+                homeTeam: 'India',
+                awayTeam: 'Japan',
+                homeScore: 2,
+                awayScore: 1,
+                time: "75'",
+                competition: 'Premier League'
+            },
+            {
+                id: 2,
+                sport: 'basketball',
+                homeTeam: 'India',
+                awayTeam: 'Japan',
+                homeScore: 95,
+                awayScore: 92,
+                time: "Q4 5:30",
+                competition: 'NBA'
+            }
+        ];
+
+        // Sample data for upcoming events
+        const upcomingEvents = [
+            {
+                id: 1,
+                sport: 'tennis',
+                title: 'Finals',
+                date: '2025-07-14',
+                time: '14:00',
+                venue: 'All England Club'
+            },
+            {
+                id: 2,
+                sport: 'cricket',
+                title: 'India vs Australia',
+                date: '2025-03-01',
+                time: '10:00',
+                venue: 'Melbourne Cricket Ground'
+            }
+        ];
+
+        // Function to create match card
+        function createMatchCard(match) {
+            return `
+                <div class="match-card" data-sport="${match.sport}">
+                    <div class="match-header">
+                        <span class="match-status">
+                            <span class="live-indicator"></span>LIVE
+                        </span>
+                        <span>${match.competition}</span>
+                    </div>
+                    <div class="match-teams">
+                        <div class="team">
+                            <div class="team-name">${match.homeTeam}</div>
+                        </div>
+                        <div class="score">${match.homeScore} - ${match.awayScore}</div>
+                        <div class="team">
+                            <div class="team-name">${match.awayTeam}</div>
+                        </div>
+                    </div>
+                    <div class="match-info">${match.time}</div>
+                </div>
+            `;
+        }
+
+        // Function to create event item
+        function createEventItem(event) {
+            return `
+                <div class="event-item" data-sport="${event.sport}">
+                    <div class="event-date">${formatDate(event.date)} ${event.time}</div>
+                    <div class="event-title">${event.title}</div>
+                    <div class="event-venue">${event.venue}</div>
+                </div>
+            `;
+        }
+
+        // Function to format date
+        function formatDate(dateStr) {
+            const date = new Date(dateStr);
+            return date.toLocaleDateString('en-US', { 
+                month: 'short', 
+                day: 'numeric', 
+                year: 'numeric' 
+            });
+        }
+
+        // Function to update clock
+        function updateClock() {
+            const clock = document.getElementById('clock');
+            clock.textContent = new Date().toLocaleTimeString();
+        }
+
+        // Function to show notification
+        function showNotification(message) {
+            const notification = document.getElementById('notification');
+            notification.textContent = message;
+            notification.style.display = 'block';
+            setTimeout(() => {
+                notification.style.display = 'none';
+            }, 3000);
+        }
+
+        // Function to render matches
+        function renderMatches(sport = 'all') {
+            const container = document.getElementById('liveMatchesContainer');
+            const filteredMatches = sport === 'all' 
+                ? liveMatches 
+                : liveMatches.filter(match => match.sport === sport);
+            
+            container.innerHTML = filteredMatches.map(createMatchCard).join('');
+        }
+
+        // Function to render upcoming events
+        function renderEvents(sport = 'all') {
+            const container = document.getElementById('upcomingEventsContainer');
+            const filteredEvents = sport === 'all' 
+                ? upcomingEvents 
+                : upcomingEvents.filter(event => event.sport === sport);
+            
+            container.innerHTML = filteredEvents.map(createEventItem).join('');
+        }
+
+        // Initialize page
+        document.addEventListener('DOMContentLoaded', () => {
+            renderMatches();
+            renderEvents();
+            updateClock();
+            setInterval(updateClock, 1000);
+
+            // Sport tabs functionality
+            document.querySelectorAll('.sport-tab').forEach(tab => {
+                tab.addEventListener('click', () => {
+                    document.querySelector('.sport-tab.active').classList.remove('active');
+                    tab.classList.add('active');
+                    const sport = tab.dataset.sport;
+                    renderMatches(sport);
+                    renderEvents(sport);
+                });
+            });
+
+            // Simulate live updates
+            setInterval(() => {
+                const randomMatch = liveMatches[Math.floor(Math.random() * liveMatches.length)];
+                randomMatch.homeScore += Math.random() > 0.8 ? 1 : 0;
+                randomMatch.awayScore += Math.random() > 0.8 ? 1 : 0;
+                renderMatches(document.querySelector('.sport-tab.active').dataset.sport);
+                
+                if (Math.random() > 0.7) {
+                    showNotification('Goal! ' + randomMatch.homeTeam + ' scores!');
+                }
+            }, 5000);
+        });
+    </script>
+</body>
+</html>

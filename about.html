@@ -1,0 +1,399 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Us</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Arial', sans-serif;
+        }
+
+        body {
+            line-height: 1.6;
+            color: #333;
+            background-color: #f9fafb;
+        }
+
+        .hero {
+            background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)),
+                        url('/api/placeholder/1920/600');
+            background-size: cover;
+            background-position: center;
+            height: 60vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: white;
+            padding: 2rem;
+        }
+
+        .hero-content h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+            animation: fadeInUp 1s ease;
+        }
+
+        .hero-content p {
+            font-size: 1.2rem;
+            max-width: 600px;
+            margin: 0 auto;
+            animation: fadeInUp 1s ease 0.2s;
+            opacity: 0;
+            animation-fill-mode: forwards;
+        }
+
+        .section {
+            padding: 5rem 2rem;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .story-section {
+            background: rgb(253, 184, 184);
+        }
+
+        .story-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+        }
+
+        .story-image {
+            width: 100%;
+            height: 400px;
+            background: url('/api/placeholder/600/400');
+            background-size: cover;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        .section-title {
+            font-size: 2.5rem;
+            margin-bottom: 2rem;
+            color: #2d3748;
+        }
+
+        .values-section {
+            background-color: #e8f4f8;
+        }
+
+        .values-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+        }
+
+        .value-card {
+            background: #6d7b94;
+            padding: 2rem;
+            border-radius: 10px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease;
+            border: 1px solid #d1e7f5;
+        }
+
+        .value-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+        }
+
+        .value-icon {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+            color: #4299e1;
+        }
+
+        .team-section {
+            background: white;
+        }
+
+        .team-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+        }
+
+        .team-member {
+            text-align: center;
+            transition: transform 0.3s ease;
+        }
+
+        .team-member:hover {
+            transform: translateY(-5px);
+        }
+
+        .member-image {
+            width: 200px;
+            height: 200px;
+            border-radius: 50%;
+            margin: 0 auto 1rem;
+            background: url('/api/placeholder/200/200');
+            background-size: cover;
+            border: 5px solid #e2e8f0;
+        }
+
+        .member-name {
+            font-size: 1.2rem;
+            font-weight: bold;
+            margin-bottom: 0.5rem;
+        }
+
+        .member-role {
+            color: #718096;
+            margin-bottom: 1rem;
+        }
+
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+        }
+
+        .social-link {
+            color: #4a5568;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .social-link:hover {
+            color: #4299e1;
+        }
+
+        .stats-section {
+            background-color: #2d3748;
+            color: white;
+            text-align: center;
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+        }
+
+        .stat-item {
+            padding: 2rem;
+        }
+
+        .stat-number {
+            font-size: 2.5rem;
+            font-weight: bold;
+            margin-bottom: 0.5rem;
+            color: #4299e1;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @media (max-width: 768px) {
+            .story-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .hero-content h1 {
+                font-size: 2.5rem;
+            }
+
+            .section {
+                padding: 3rem 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <section class="hero">
+        <div class="hero-content">
+            <h1>About Us</h1>
+            <p>Enhancing India's Sports Potential</p>
+        </div>
+    </section>
+
+    <section class="section story-section">
+        <div class="container story-grid">
+            <div class="story-image"></div>
+            <div class="story-content">
+                <h2 class="section-title">Our Story</h2>
+                <p>HobiFy is a dynamic web platform that connects sports enthusiasts, coaches, and event organizers across outdoor activities like football, jogging, and yoga.
+                    Users can find local communities, book certified coaches, and reserve nearby grounds with ease.
+                    It offers a seamless experience with real-time booking, secure payments, and engaging gamification features.
+                    Whether you're a beginner or a pro, HobiFy helps you train, play, and grow within your city's sports network.
+                    More than a website—it's a vibrant fitness community in motion. 🏃‍♂️⚽🧘‍♀️</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="section values-section">
+        <div class="container">
+            <h2 class="section-title" style="text-align: center;">Our Values</h2>
+            <div class="values-grid">
+                <div class="value-card">
+                    <div class="value-icon">💡</div>
+                    <h3>Team>Individual</h3>
+                    <p>Together, We Thrive – We believe that the power of community drives success. Every match played, every run shared, and every session coached becomes better when done together.
+
+                        Collaboration Over Competition – While individual growth is important, we grow faster, stronger, and better when we uplift each other.</p>
+                </div>
+                <div class="value-card">
+                    <div class="value-icon">🤝</div>
+                    <h3>Integrity</h3>
+                    <p>Transparency in Every Interaction – We believe in honest communication, clear pricing, and upfront commitments—whether you're booking a coach, a ground, or joining a team.
+
+                        Trust Drives Our Community – Integrity builds trust, and trust builds teams. We stand by our word and ensure every user—player, coach, or organizer—is treated fairly.
+                        
+                        Accountability is Our Standard – We own our actions and expect the same from our community. Mistakes are learning moments, not cover-ups.
+                        
+                        Respect, Always – We value every player's effort, every coach's guidance, and every organizer's hustle. Mutual respect is non-negotiable..</p>
+                </div>
+                <div class="value-card">
+                    <div class="value-icon">⭐</div>
+                    <h3>Attention to Detail</h3>
+                    <p> At HobiFy, every click, scroll, and booking is designed with you in mind.
+                        We pay close attention to the details—so your ground is ready, your coach is real, and your sessions are smooth.
+                        From finding a local jog to joining your next tournament, we're here to make every step easy, accurate, and enjoyable.
+                        If something feels off, tell us—we're always listening, always improving.
+                        Because at HobiFy, you don't just play—you belong.</p>
+                </div>
+            </div>  
+        </div>
+    </section>
+
+    <section class="section team-section">
+        <div class="container">
+            <h2 class="section-title" style="text-align: center;">Meet Our Team</h2>
+            <div class="team-grid">
+                <div class="team-member">
+                    <div class="member-image">
+                        <img src="ankush.jpg" style="width: 200px; height: 200px; border-radius: 50%; border: 5px solid #e2e8f0;">
+                    </div>
+                    <h3 class="member-name">Somnath</h3>
+                    <p class="member-role">Devloper</p>
+                    <div class="social-links">
+                        <a href="#" class="social-link">Instagram</a>
+                        <a href="https://www.instagram.com/ankush__kumar_52?igsh=MWx2aWRlZDJwOXJiZA==" class="social-link">@somnath8252</a>
+                    </div>
+                    <div class="social-links">
+                        <a href="#" class="social-link">Tweeter</a>
+                        <a href="https://www.instagram.com/rastogi80496/?next=%2F&hl=en" class="social-link">@nigam5686</a>
+                    </div>
+                </div>
+                <div class="team-member">
+                    <div class="member-image">
+                        <img src="arunispic.jpg" style="width: 200px; height: 200px; border-radius: 50%; border: 5px solid #e2e8f0;">
+                    </div>
+                    <h3 class="member-name">Aruni Sharma</h3>
+                    <p class="member-role">Team Lead</p>
+                    <div class="social-links">
+                        <a href="#" class="social-link">Instagram</a>
+                        <a href="https://www.instagram.com/arunisharma6970?igsh=MTkzdHY0bGo1YnFsdA==" class="social-link">@arunisharma6970</a>
+                    </div>
+                    <div class="social-links">
+                        <a href="#" class="social-link">Tweeter</a>
+                        <a href="https://www.instagram.com/rastogi80496/?next=%2F&hl=en" class="social-link">@nigam5686</a>
+                    </div>
+                </div>
+                
+                <div class="team-member">
+                    <div class="member-image"></div>
+                    <h3 class="member-name">Debdeep Sarkar</h3>
+                    <p class="member-role">Marketing</p>
+                    <div class="social-links">
+                        <a href="#" class="social-link">Instagram</a>
+                        <a href="https://www.instagram.com/_raunak_raj?igsh=MW9sNGp1bDI0NnR1dg==" class="social-link">Debdeep5454</a>
+                    </div>
+                    <div class="social-links">
+                        <a href="#" class="social-link">Tweeter</a>
+                        <a href="https://www.instagram.com/rastogi80496/?next=%2F&hl=en" class="social-link">@nigam5686</a>
+                    </div>
+
+                </div>
+                <div class="team-member">
+                    <div class="member-image"></div>
+                    <h3 class="member-name">Nigam Kumar</h3>
+                    <p class="member-role">Customer Service</p>
+                    <div class="social-links">
+                        <a href="#" class="social-link">Instagram</a>
+                        <a href="https://www.instagram.com/rastogi80496/?next=%2F&hl=en" class="social-link">@nigam5686</a>
+                    </div>
+                    <div class="social-links">
+                        <a href="#" class="social-link">Tweeter</a>
+                        <a href="https://www.instagram.com/rastogi80496/?next=%2F&hl=en" class="social-link">@nigam5686</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section stats-section">
+        <div class="container">
+            <div class="stats-grid">
+                <div class="stat-item">
+                    <div class="stat-number" id="projectsCount">0</div>
+                    <p>Projects Completed</p>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number" id="clientsCount">0</div>
+                    <p>Happy Clients</p>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number" id="teamCount">0</div>
+                    <p>Team Members</p>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number" id="awardsCount">0</div>
+                    <p>Awards Won</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <script>
+        // Animate numbers when in viewport
+        function animateValue(id, start, end, duration) {
+            const obj = document.getElementById(id);
+            let startTimestamp = null;
+            
+            const step = (timestamp) => {
+                if (!startTimestamp) startTimestamp = timestamp;
+                const progress = Math.min((timestamp - startTimestamp) / duration, 1);
+                obj.innerHTML = Math.floor(progress * (end - start) + start);
+                if (progress < 1) {
+                    window.requestAnimationFrame(step);
+                }
+            };
+            
+            window.requestAnimationFrame(step);
+        }
+
+        // Intersection Observer for stats animation
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    animateValue('projectsCount', 0, 500, 2000);
+                    animateValue('clientsCount', 0, 200, 2000);
+                    animateValue('teamCount', 0, 50, 2000);
+                    animateValue('awardsCount', 0, 25, 2000);
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.5 });
+
+        observer.observe(document.querySelector('.stats-section'));
+    </script>
+</body>
+</html>

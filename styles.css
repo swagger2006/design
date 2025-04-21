@@ -1,0 +1,755 @@
+/* Matches Section Styles */
+.matches-section {
+    padding: 4rem 0;
+    background-color: #f8f9fa;
+}
+
+.matches-filters {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    margin-bottom: 2rem;
+}
+
+.matches-filters .filter-button {
+    padding: 0.5rem 1.5rem;
+    border: none;
+    border-radius: 25px;
+    background-color: #fff;
+    color: #333;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.matches-filters .filter-button.active,
+.matches-filters .filter-button:hover {
+    background-color: #007bff;
+    color: #fff;
+}
+
+.matches-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+    padding: 1rem;
+}
+
+.match-card {
+    background: #fff;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    padding: 1.5rem;
+    transition: transform 0.3s ease;
+}
+
+.match-card:hover {
+    transform: translateY(-5px);
+}
+
+.match-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1.5rem;
+}
+
+.match-header h3 {
+    color: #333;
+    font-size: 1.2rem;
+}
+
+.match-status {
+    padding: 0.3rem 0.8rem;
+    border-radius: 15px;
+    font-size: 0.9rem;
+    font-weight: 500;
+}
+
+.match-status.upcoming {
+    background-color: #e3f2fd;
+    color: #1976d2;
+}
+
+.match-teams {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1.5rem;
+}
+
+.team {
+    text-align: center;
+}
+
+.team img {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-bottom: 0.5rem;
+}
+
+.team h4 {
+    font-size: 1rem;
+    color: #333;
+    margin: 0;
+}
+
+.vs {
+    font-size: 1.2rem;
+    font-weight: bold;
+    color: #666;
+}
+
+.match-details {
+    margin-bottom: 1.5rem;
+}
+
+.match-details p {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    color: #666;
+    margin: 0.5rem 0;
+}
+
+.match-details i {
+    color: #007bff;
+}
+
+.book-ticket {
+    width: 100%;
+    padding: 0.8rem;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.book-ticket:hover {
+    background-color: #0056b3;
+}
+
+/* Top Navigation Bar Styles */
+.top-nav {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    background-color: rgba(255, 255, 255, 0.95);
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    z-index: 1000;
+    padding: 10px 0;
+}
+
+.nav-content {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.nav-left {
+    display: flex;
+    align-items: center;
+}
+
+.nav-right {
+    flex: 1;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+}
+
+.logo {
+    font-family: 'Dancing Script', cursive;
+    font-size: 1.8rem;
+    font-weight: 700;
+    color: #333;
+    text-align: right;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .nav-content {
+        padding: 0 10px;
+    }
+    
+    .logo {
+        font-size: 1.5rem;
+    }
+}
+
+/* Adjust wrapper to account for fixed nav */
+#wrapper {
+    margin-top: 60px;
+}
+
+/* User Authentication Styles */
+.welcome-message {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    background-color: rgba(255, 255, 255, 0.9);
+    padding: 10px 20px;
+    border-radius: 20px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    z-index: 100;
+}
+
+.welcome-message p {
+    margin: 0;
+    color: #333;
+    font-weight: 600;
+}
+
+.dashboard-link {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    color: #333;
+    text-decoration: none;
+    padding: 5px 10px;
+    border-radius: 15px;
+    transition: all 0.3s ease;
+}
+
+.dashboard-link:hover {
+    background-color: rgba(0, 0, 0, 0.05);
+    transform: translateY(-1px);
+}
+
+.dashboard-link i {
+    color: #333;
+}
+
+/* Protected Content Styles */
+.protected-content {
+    position: relative;
+}
+
+.protected-content::before {
+    content: "Please sign in to access this feature";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(255, 255, 255, 0.9);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 20px;
+    border-radius: 10px;
+    font-weight: 600;
+    color: #333;
+    z-index: 1;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.protected-content:hover::before {
+    opacity: 1;
+}
+
+/* Authentication Modal Styles */
+.clerk-modal {
+    z-index: 1001;
+}
+
+.clerk-modal-overlay {
+    background-color: rgba(0, 0, 0, 0.5);
+}
+
+/* Responsive Design for Authentication */
+@media (max-width: 768px) {
+    .welcome-message {
+        top: 10px;
+        left: 10px;
+        padding: 8px 15px;
+        font-size: 0.9rem;
+    }
+    
+    .dashboard-link {
+        padding: 4px 8px;
+        font-size: 0.8rem;
+    }
+}
+
+/* Auth Button Styles */
+.auth-buttons {
+    display: flex;
+    gap: 10px;
+}
+
+.nav-btn {
+    padding: 8px 16px;
+    border: none;
+    border-radius: 20px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 0.9rem;
+}
+
+.sign-in-btn {
+    background-color: transparent;
+    color: #333;
+    border: 2px solid #333;
+}
+
+.sign-up-btn {
+    background-color: #333;
+    color: white;
+}
+
+.nav-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.sign-in-btn:hover {
+    background-color: #333;
+    color: white;
+}
+
+.sign-up-btn:hover {
+    background-color: #444;
+}
+
+/* Auth Modal Styles */
+.auth-modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 1000;
+}
+
+.auth-modal-content {
+    position: relative;
+    background-color: #fff;
+    margin: 10% auto;
+    padding: 20px;
+    width: 90%;
+    max-width: 400px;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.close-modal {
+    position: absolute;
+    right: 20px;
+    top: 10px;
+    font-size: 28px;
+    font-weight: bold;
+    cursor: pointer;
+    color: #333;
+}
+
+.close-modal:hover {
+    color: #000;
+}
+
+.form-group {
+    margin-bottom: 15px;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 5px;
+    color: #333;
+    font-weight: 500;
+}
+
+.form-group input {
+    width: 100%;
+    padding: 8px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    font-size: 16px;
+}
+
+.auth-submit-btn {
+    width: 100%;
+    padding: 10px;
+    background-color: #333;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: 600;
+    transition: background-color 0.3s ease;
+}
+
+.auth-submit-btn:hover {
+    background-color: #444;
+}
+
+.auth-switch {
+    margin-top: 20px;
+    text-align: center;
+}
+
+.auth-switch-btn {
+    background: none;
+    border: none;
+    color: #333;
+    text-decoration: underline;
+    cursor: pointer;
+    font-weight: 600;
+}
+
+.auth-switch-btn:hover {
+    color: #000;
+}
+
+/* Error Message Styles */
+.error-message {
+    color: #ff4444;
+    margin-top: 10px;
+    text-align: center;
+    font-size: 14px;
+    display: none;
+}
+
+/* Success Message Styles */
+.success-message {
+    color: #00C851;
+    margin-top: 10px;
+    text-align: center;
+    font-size: 14px;
+    display: none;
+}
+
+/* Loading State */
+.loading {
+    position: relative;
+    pointer-events: none;
+}
+
+.loading::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(255, 255, 255, 0.7);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .nav-btn {
+        padding: 6px 12px;
+        font-size: 0.8rem;
+    }
+    
+    .auth-modal-content {
+        margin: 20% auto;
+        width: 95%;
+        padding: 15px;
+    }
+}
+
+/* Tweet Feed Styles */
+.tweet-feed {
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+.tweet {
+    background-color: #fff;
+    border: 1px solid #e1e8ed;
+    border-radius: 12px;
+    padding: 15px;
+    margin-bottom: 15px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+.tweet-content {
+    margin-bottom: 10px;
+}
+
+.tweet-header {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.tweet-profile-pic {
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    margin-right: 10px;
+}
+
+.tweet-user-info {
+    display: flex;
+    flex-direction: column;
+}
+
+.tweet-username {
+    font-weight: bold;
+    color: #14171a;
+}
+
+.tweet-time {
+    color: #657786;
+    font-size: 0.9em;
+}
+
+.tweet-text {
+    color: #14171a;
+    line-height: 1.4;
+    margin-bottom: 10px;
+}
+
+.tweet-engagement {
+    display: flex;
+    justify-content: space-around;
+    border-top: 1px solid #e1e8ed;
+    padding-top: 10px;
+}
+
+.engagement-action {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    color: #657786;
+    cursor: pointer;
+    padding: 5px 10px;
+    border-radius: 20px;
+    transition: all 0.2s ease;
+}
+
+.engagement-action:hover {
+    background-color: rgba(29, 161, 242, 0.1);
+}
+
+.engagement-action.reply:hover {
+    color: #1da1f2;
+}
+
+.engagement-action.retweet:hover {
+    color: #17bf63;
+}
+
+.engagement-action.like:hover {
+    color: #e0245e;
+}
+
+.action-count {
+    font-size: 0.9em;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .tweet-feed {
+        padding: 10px;
+    }
+    
+    .tweet {
+        padding: 10px;
+    }
+    
+    .tweet-profile-pic {
+        width: 40px;
+        height: 40px;
+    }
+}
+
+/* Reply Modal Styles */
+.reply-modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 1000;
+}
+
+.reply-modal-content {
+    position: relative;
+    background-color: #fff;
+    margin: 10% auto;
+    padding: 20px;
+    width: 90%;
+    max-width: 500px;
+    border-radius: 12px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.reply-header {
+    margin-bottom: 20px;
+}
+
+.reply-header h3 {
+    color: #14171a;
+    margin-bottom: 10px;
+}
+
+.original-tweet {
+    background-color: #f5f8fa;
+    padding: 10px;
+    border-radius: 8px;
+    margin-bottom: 15px;
+}
+
+.original-tweet p {
+    color: #14171a;
+    margin: 0;
+}
+
+.reply-form-group {
+    margin-bottom: 15px;
+}
+
+.reply-form-group textarea {
+    width: 100%;
+    min-height: 100px;
+    padding: 10px;
+    border: 1px solid #e1e8ed;
+    border-radius: 8px;
+    resize: vertical;
+    font-size: 16px;
+}
+
+.reply-submit-btn {
+    width: 100%;
+    padding: 10px;
+    background-color: #1da1f2;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: 600;
+    transition: background-color 0.2s ease;
+}
+
+.reply-submit-btn:hover {
+    background-color: #1991db;
+}
+
+/* Responsive Design for Reply Modal */
+@media (max-width: 768px) {
+    .reply-modal-content {
+        margin: 20% auto;
+        width: 95%;
+        padding: 15px;
+    }
+}
+
+/* Story Section Styles */
+.story-section {
+    width: 100%;
+    max-width: 1200px;
+    margin: 40px auto;
+    padding: 0 20px;
+}
+
+.story-image {
+    position: relative;
+    width: 100%;
+    height: 400px;
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+    transition: transform 0.3s ease;
+}
+
+.story-image:hover {
+    transform: scale(1.02);
+}
+
+.story-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    filter: brightness(0.8);
+    transition: all 0.3s ease;
+}
+
+.story-image:hover .story-img {
+    filter: brightness(0.6);
+    transform: scale(1.1);
+}
+
+.story-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    text-align: center;
+    padding: 20px;
+    background: linear-gradient(to bottom, rgba(0,0,0,0.2), rgba(0,0,0,0.6));
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.story-image:hover .story-overlay {
+    opacity: 1;
+}
+
+.story-overlay h3 {
+    font-size: 2.5rem;
+    font-weight: 700;
+    margin-bottom: 10px;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+    transform: translateY(20px);
+    transition: transform 0.3s ease;
+}
+
+.story-overlay p {
+    font-size: 1.2rem;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+    transform: translateY(20px);
+    transition: transform 0.3s ease 0.1s;
+}
+
+.story-image:hover .story-overlay h3,
+.story-image:hover .story-overlay p {
+    transform: translateY(0);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .story-image {
+        height: 300px;
+    }
+    
+    .story-overlay h3 {
+        font-size: 2rem;
+    }
+    
+    .story-overlay p {
+        font-size: 1rem;
+    }
+} 

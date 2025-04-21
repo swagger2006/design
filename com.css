@@ -1,0 +1,133 @@
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+}
+
+body {
+    background-color: #b1e2fa;
+}
+
+.container {
+    max-width:1200px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+.compose-tweet {
+    background: rgb(255, 208, 212);
+    border-radius: 15px;
+    padding: 15px;
+    margin-bottom: 20px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.compose-box {
+    display: flex;
+    gap: 15px;
+}
+
+.avatar {
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    background-color: #523737;
+}
+
+.compose-input {
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+.compose-input textarea {
+    border: none;
+    resize: none;
+    padding: 10px;
+    font-size: 18px;
+    margin-bottom: 10px;
+    min-height: 100px;
+}
+
+.compose-input textarea:focus {
+    outline: none;
+}
+
+.tweet-actions {
+    display: flex;
+    justify-content: flex-end;
+}
+
+.tweet-button {
+    background-color: #f2921d;
+    color: rgb(116, 32, 60);
+    border: none;
+    padding: 10px 20px;
+    border-radius: 20px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+
+.tweet-button:hover {
+    background-color: #1991db;
+}
+
+.tweet {
+    background: rgb(137, 108, 175);
+    border-radius: 15px;
+    padding: 15px;
+    margin-bottom: 15px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.tweet-header {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 10px;
+}
+
+.user-info {
+    flex-grow: 1;
+}
+
+.user-name {
+    font-weight: bold;
+}
+
+.user-handle, .tweet-time {
+    color: #536471;
+}
+
+.tweet-content {
+    margin-bottom: 15px;
+    line-height: 1.5;
+}
+
+.tweet-engagement {
+    display: flex;
+    justify-content: space-between;
+    color: #536471;
+}
+
+.engagement-action {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    cursor: pointer;
+    transition: color 0.2s;
+}
+
+.engagement-action:hover {
+    color: #1da1f2;
+}
+
+.engagement-action.retweet:hover {
+    color: #00ba7c;
+}
+
+.engagement-action.like:hover {
+    color: #f91880;
+}

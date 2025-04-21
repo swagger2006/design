@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Community</title>
+    <link rel="stylesheet" href="com.css">
+</head>
+<body>
+    <div class="container">
+        <!-- Compose Tweet Section -->
+        <div class="compose-tweet">
+            <div class="compose-box">
+                <div class="avatar"></div>
+                <div class="compose-input">
+                    <textarea placeholder="What's happening?" maxlength="280" id="tweetInput"></textarea>
+                    <div class="tweet-actions">
+                        <button class="tweet-button" onclick="postTweet()">Update</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Tweet Feed -->
+        <div id="tweetFeed"></div>
+    </div>
+
+    <script src="com.js"></script>
+</body>
+</html>
